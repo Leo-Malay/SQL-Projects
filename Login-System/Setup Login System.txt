@@ -1,0 +1,4 @@
+CREATE DATABASE login_system;
+USE login_system;
+CREATE TABLE login_credential (name VARCHAR(30), username VARCHAR(30), password VARCHAR(30));
+commit;
