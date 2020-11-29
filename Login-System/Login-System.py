@@ -21,6 +21,7 @@ class login_system:
         self.__db.close()
 
     def login(self, username, password):
+        # login in to account
         query = "SELECT password FROM login_credential WHERE username='" + username + "';"
         self.__myc.execute(query)
         self.__result = self.__myc.fetchone()
@@ -32,13 +33,13 @@ class login_system:
             return -1
 
     def new_user(self, name, username, password):
+        # Add a new user
         query = "INSERT INTO login_credential (name, username, password) VALUES ('" + name + "','" + \
             username + "','" + password + "');"
         sup_query = "SELECT username FROM login_credential WHERE username='" + username + "';"
         try:
             self.__myc.execute(sup_query)
             self.__result = self.__myc.fetchone()
-            print(self.__result)
             if(self.__result == None):
                 self.__myc.execute(query)
                 self.__db.commit()
