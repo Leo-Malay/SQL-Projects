@@ -1,0 +1,5 @@
+login-system -
+            |- login-credential -
+            |-                 |- name (VARCHAR(30))
+            |-                 |- username (VARCHAR(30))
+            |-                 |- password (VARCHAR(30))
