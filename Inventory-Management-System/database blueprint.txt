@@ -1,0 +1,19 @@
+inventory ----
+            |- item_data -
+            |-          |- code (VARCHAR(50))
+            |-          |- name (VARCHAR(50))
+            |-          |- price (FLOAT(10,2))
+            |-          |- qpp (VARCHAR(10))
+            |-
+            |- stock_data -
+            |-           |- code (VARCHAR(50))
+            |-           |- qty (INT(10))
+            |-
+            |- refill_data -
+            |-            |- code (VARCHAR(50))
+            |-            |- qty (INT(10))
+            |-            |- refill_date (DATE)
+            |- use_data -
+            |-         |- code (VARCHAR(50))
+            |-         |- qty (INT(10))
+            |-         |- use_data (DATE)

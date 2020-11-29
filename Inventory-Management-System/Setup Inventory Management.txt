@@ -1,0 +1,7 @@
+CREATE DATABASE inventory;
+USE inventory;
+CREATE TABLE item_data (code VARCHAR(50), name VARCHAR(50), price FLOAT(10,2), qpp VARCHAR(50));
+CREATE TABLE stock_data (code VARCHAR(50), qty INT(10));
+CREATE TABLE refill_data (code VARCHAR(50), qty INT(10), refill_date DATE);
+CREATE TABLE use_data (code VARCHAR(50), qty INT(10), use_date DATE);
+commit;
