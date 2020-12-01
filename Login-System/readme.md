@@ -7,4 +7,5 @@
 <p>Must have python and mysql installed</p>
 <p>More to come yet! (Updates will be coming soon!)</p>
 
-<p style="border-left:1px solid lightgreen">Update 01-12-2020 <br>---> Introducing new token based authentication. New Token on every login. Next Update info: New API: logout,check_token </p>
+<p>Update 01-12-2020 <br>---> Introducing new token based authentication. New Token on every login.</p>
+<p>Update 01-12-2020 <br>---> New APIs: check_token(To authenticate the current token), logout (To clear the existing token thus the token becomes useless)</p>
