@@ -1,5 +1,13 @@
 login-system -
-            |- login-credential -
-            |-                 |- name (VARCHAR(30))
-            |-                 |- username (VARCHAR(30))
-            |-                 |- password (VARCHAR(30))
+            |- login_credential -
+            |-                 |- uid (INT NOT NULL)
+            |-                 |- name (VARCHAR(30) NOT NULL)
+            |-                 |- username (VARCHAR(30) NOT NULL)
+            |-                 |- password (VARCHAR(30) NOT NULL)
+            |- curr_login_status -
+            |-                  |- id (INT NOT NULL)
+            |-                  |- uid (INT NOT NULL)
+            |-                  |- login_dt (DATE NOT NULL)
+            |-                  |- logout_dt (DATE NOT NULL)
+            |-                  |- is_active (INT NOT NULL)
+            |-                  |- token (VARCHAR(160))

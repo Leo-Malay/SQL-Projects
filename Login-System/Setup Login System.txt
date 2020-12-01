@@ -1,4 +1,5 @@
 CREATE DATABASE login_system;
 USE login_system;
-CREATE TABLE login_credential (name VARCHAR(30), username VARCHAR(30), password VARCHAR(30));
+CREATE TABLE login_credential (uid INT NOT NULL AUTO_INCREMENT, name VARCHAR(30) NOT NULL, username VARCHAR(30) NOT NULL, password VARCHAR(30) NOT NULL, PRIMARY KEY (uid,username));
+CREATE TABLE curr_login_status (id INT NOT NULL AUTO_INCREMENT, uid INT NOT NULL, login_dt DATETIME NOT NULL, logout_dt DATETIME NOT NULL, is_active INT NOT NULL, token VARCHAR(160) NOT NULL, PRIMARY KEY (id,uid));
 commit;
