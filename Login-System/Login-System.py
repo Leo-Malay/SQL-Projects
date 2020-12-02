@@ -29,7 +29,10 @@ class login_system:
         query = "SELECT uid,password FROM login_credential WHERE username='" + username + "';"
         self.__myc.execute(query)
         self.__result = self.__myc.fetchone()
-        if self.__result[1] == password:
+        if self.__result == None:
+            print("[ERROR]: No such Account exist")
+            return -1, -1
+        elif self.__result[1] == password:
             token = self.__gen_token(username, password)
             query1 = "UPDATE curr_login_status SET token='"+str(token)+"',login_dt='" + \
                 self.__datetime()+"',is_active=1 where uid='" + \
@@ -107,6 +110,43 @@ class login_system:
             print("[ERROR]: Account not created")
             return -1
 
+    def rm_user(self, username, token):
+        # For removing the account.
+        self.__result = self.check_token(username, token)
+        if self.__result == 1:
+            uid = str(self.__get_uid(username))
+            query = "DELETE FROM login_credential WHERE uid=" + uid + ";"
+            query1 = "DELETE FROM curr_login_status WHERE uid=" + uid + ";"
+            self.__myc.execute(query)
+            self.__myc.execute(query1)
+            self.__db.commit()
+            print("[SUCCESS]: Account removed successfully")
+            return 1
+        else:
+            print("[ERROR]: You are not Authorized to delete the account")
+            return -1
+        pass
+
+    def __get_uid(self, username=-1):
+        if username != -1:
+            query = "SELECT uid FROM login_credential WHERE username='" + \
+                str(username)+"';"
+            try:
+                self.__myc.execute(query)
+                self.__result = self.__myc.fetchone()
+                if self.__result == None:
+                    print("[ERROR]: No such user found")
+                    return -1
+                else:
+                    print("[SUCCESS]: User found")
+                    return self.__result[0]
+            except:
+                print("[ERROR]: Ran into some problem")
+                return -1
+        else:
+            print("[ERROR]: Argument is required")
+            return -1
+
     def __gen_token(self, username, password):
         # Generate a token for the user.
         # Preparing the randomizied Ref string.
@@ -130,11 +170,14 @@ class login_system:
 
 
 # Test code
-# username = ""
-# password = ""
-# db = login_system("localhost", username, password)
-# db.new_user("name", username, password)
+# db_username = "db_user"
+# db_password = "db_pass"
+# db = login_system("localhost", db_username, db_password)
+# username = "username"
+# password = "password"
+# db.new_user("name", username111, password111)
 # res, token = db.login(username, password)
 # db.check_token(username, token)
+# db.rm_user(username, token)
 # db.logout(token)
 # db.end()
