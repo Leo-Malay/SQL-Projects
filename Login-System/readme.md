@@ -9,3 +9,4 @@
 
 <p>Update 01-12-2020 <br>---> Introducing new token based authentication. New Token on every login.</p>
 <p>Update 01-12-2020 <br>---> New APIs: check_token(To authenticate the current token), logout (To clear the existing token thus the token becomes useless)</p>
+<p>Update 02-12-2020 <br>---> New APIs: rm_user (To remove the account) and Internal APIs</p>
