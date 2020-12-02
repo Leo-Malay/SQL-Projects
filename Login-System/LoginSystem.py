@@ -125,7 +125,26 @@ class login_system:
         else:
             print("[ERROR]: You are not Authorized to delete the account")
             return -1
-        pass
+
+    def get_uid(self, token=-1):
+        if token != -1:
+            query = "SELECT uid FROM curr_login_status WHERE token='" + \
+                str(token)+"';"
+            try:
+                self.__myc.execute(query)
+                self.__result = self.__myc.fetchone()
+                if self.__result == None:
+                    print("[ERROR]: No such user found")
+                    return -1
+                else:
+                    print("[SUCCESS]: User found")
+                    return self.__result[0]
+            except:
+                print("[ERROR]: Ran into some problem")
+                return -1
+        else:
+            print("[ERROR]: Argument is required")
+            return -1
 
     def __get_uid(self, username=-1):
         if username != -1:
