@@ -1,0 +1,13 @@
+money_manager -
+             |- balance -
+             |-        |- id (INT NOT NULL AUTO-INCREMENT)
+             |-        |- uid (INT NOT NULL)
+             |-        |- amount (DOUBLE(10,2) NOT NULL)
+             |-        |- last_dt (DATETIME NOT NULL)
+             |- record -
+             |-       |- id (INT NOT NULL AUTO-INCREMENT)
+             |-       |- uid (INT NOT NULL)
+             |-       |- type (VARCHAR(20) NOT NULL)
+             |-       |- amount (DOUBLE(10,2) NOT NULL)
+             |-       |- purpose (VARCHAR(100))
+             |-       |- dt (DATETIME NOT NULL)
